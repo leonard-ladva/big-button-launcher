@@ -1,8 +1,6 @@
 import 'package:bbl/button_data.dart';
-import 'package:bbl/main.dart';
-import 'package:flutter/material.dart';
+import 'package:bbl/speak.dart';
 import 'package:external_app_launcher/external_app_launcher.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 
 const homePageData = ButtonData(
   name: "Home Page",
@@ -62,11 +60,11 @@ const homePageData = ButtonData(
   ],
 );
 
-_launchSpotify() async {
+void _launchSpotify() async {
   if (await LaunchApp.isAppInstalled(androidPackageName: 'com.spotify.music')) {
     LaunchApp.openApp(androidPackageName: 'com.spotify.music');
   } else {
-    throw 'Spotify app is not installed.';
+    speak('Spotify app is not installed.');
   }
 }
 
@@ -75,7 +73,7 @@ void _launchShazam() async {
       androidPackageName: 'com.shazam.android')) {
     LaunchApp.openApp(androidPackageName: 'com.shazam.android');
   } else {
-    throw 'Shazam app is not installed.';
+    speak('Shazam app is not installed.');
   }
 }
 
@@ -84,7 +82,7 @@ void _launchYouTube() async {
       androidPackageName: 'com.google.android.youtube')) {
     LaunchApp.openApp(androidPackageName: 'com.google.android.youtube');
   } else {
-    throw 'YouTube app is not installed.';
+    speak('YouTube app is not installed.');
   }
 }
 
@@ -93,7 +91,7 @@ void _launchNetflix() async {
       androidPackageName: 'com.netflix.mediaclient')) {
     LaunchApp.openApp(androidPackageName: 'com.netflix.mediaclient');
   } else {
-    throw 'Netflix app is not installed.';
+    speak('Netflix app is not installed.');
   }
 }
 
@@ -101,15 +99,6 @@ void _launchGO3() async {
   if (await LaunchApp.isAppInstalled(androidPackageName: 'com.go3mobile.go3')) {
     LaunchApp.openApp(androidPackageName: 'com.go3mobile.go3');
   } else {
-    speakError("Go3 is not insalled");
+    speak("Go3 is not insalled");
   }
-}
-
-void speakError(String error) async {
-  await flutterTts.awaitSpeakCompletion(true);
-  await flutterTts.setVolume(1.0);
-  await flutterTts.setSpeechRate(0.8);
-  await flutterTts.setPitch(1.0);
-
-  flutterTts.speak(error);
 }

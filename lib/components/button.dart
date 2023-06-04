@@ -1,28 +1,18 @@
 import 'package:bbl/button_data.dart';
 import 'package:bbl/components/button_page.dart';
-import 'package:bbl/main.dart';
+import 'package:bbl/speak.dart';
 import 'package:flutter/material.dart';
 import 'package:vibration/vibration.dart';
 
 class Button extends StatelessWidget {
   final ButtonData buttonData;
   final int buttonIndex;
-  // final FlutterTts flutterTts = FlutterTts();
 
-  Button({
+  const Button({
     super.key,
     required this.buttonData,
     required this.buttonIndex,
   });
-
-  void speakButtonName() async {
-    await flutterTts.awaitSpeakCompletion(true);
-    await flutterTts.setVolume(1.0);
-    await flutterTts.setSpeechRate(0.8);
-    await flutterTts.setPitch(1.0);
-
-    flutterTts.speak(buttonData.name);
-  }
 
   void vibrate() {
     List<int> vibrations = [0, 200];
@@ -52,11 +42,11 @@ class Button extends StatelessWidget {
             },
             onLongPress: () {
               vibrate();
-              speakButtonName();
+              speak(buttonData.name);
             },
             onTap: () {
               vibrate();
-              speakButtonName();
+              speak(buttonData.name);
 
               if (buttonData.action != null) {
                 buttonData.action!();
