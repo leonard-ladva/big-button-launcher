@@ -1,37 +1,24 @@
 import 'package:bbl/button_data.dart';
 import 'package:bbl/speak.dart';
-import 'package:external_app_launcher/external_app_launcher.dart';
 import 'package:bbl/actions/call.dart';
-
-var packageNames = <String, String>{
-  "Spotify": "com.spotify.music",
-  "Shazam": "com.shazam.android",
-  "Youtube": "com.google.android.youtube",
-  "Netflix": "com.netflix.mediaclient",
-  "Go3": "com.go3mobile.go3",
-};
-
-var phoneNumbers = <String, String>{
-  "Leonard": "+37225026036",
-  "Roger": "+37253876410",
-};
+import 'package:bbl/actions/launch_app.dart';
 
 var homePageData = ButtonData(
   name: "Home Page",
   description: "This is the home page.",
   children: [
-    const ButtonData(name: "Entertainment", children: [
+    ButtonData(name: "Entertainment", children: [
       ButtonData(name: "Music", children: [
-        ButtonData(name: "Spotify", action: _launchSpotify),
-        ButtonData(name: "Write a song"),
-        ButtonData(name: "Shazam"),
+        ButtonData(name: "Spotify", action: () => launchApp("Spotify")),
+        const ButtonData(name: "Write a song"),
+        ButtonData(name: "Shazam", action: () => launchApp("Shazam")),
       ]),
       ButtonData(name: "Videos", children: [
-        ButtonData(name: "Youtube"),
-        ButtonData(name: "Netflix"),
-        ButtonData(name: "Go3"),
+        ButtonData(name: "Youtube", action: () => launchApp("Youtube")),
+        ButtonData(name: "Netflix", action: () => launchApp("Netflix")),
+        ButtonData(name: "Go3", action: () => launchApp("Go3")),
       ]),
-      ButtonData(name: "Games", children: [
+      const ButtonData(name: "Games", children: [
         ButtonData(name: "Snake"),
         ButtonData(name: "Word Guess"),
         ButtonData(name: "Tic Tac Toe"),
@@ -56,9 +43,8 @@ var homePageData = ButtonData(
     ]),
     ButtonData(name: "Social", children: [
       ButtonData(name: "Call", children: [
-        ButtonData(name: "Roger", action: () => call(phoneNumbers["Roger"]!)),
-        ButtonData(
-            name: "Leonard", action: () => call(phoneNumbers["Leonard"]!)),
+        ButtonData(name: "Roger", action: () => call("Roger")),
+        ButtonData(name: "Leonard", action: () => call("Leonard")),
         const ButtonData(name: "112"),
       ]),
       const ButtonData(name: "Video Call", children: [
@@ -74,15 +60,6 @@ var homePageData = ButtonData(
     ]),
   ],
 );
-
-void _launchSpotify() async {
-  if (await LaunchApp.isAppInstalled(androidPackageName: 'com.spotify.music')) {
-    await LaunchApp.openApp(
-        androidPackageName: 'com.spotify.music', openStore: true);
-  } else {
-    speak('Spotify app is not installed.');
-  }
-}
 
 void speakError(String error) async {
   await flutterTts.awaitSpeakCompletion(true);
