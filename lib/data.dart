@@ -1,6 +1,6 @@
 import 'package:bbl/button_data.dart';
-import 'package:bbl/speak.dart';
 import 'package:bbl/actions/call.dart';
+import 'package:bbl/actions/share_location.dart';
 import 'package:bbl/actions/launch_app.dart';
 
 var homePageData = ButtonData(
@@ -43,8 +43,8 @@ var homePageData = ButtonData(
     ]),
     ButtonData(name: "Social", children: [
       ButtonData(name: "Call", children: [
-        ButtonData(name: "Roger", action: () => call("Roger")),
-        ButtonData(name: "Leonard", action: () => call("Leonard")),
+        ButtonData(name: "Roger", action: () => call(contactName: "Roger")),
+        ButtonData(name: "Leonard", action: () => call(contactName: "Leonard")),
         const ButtonData(name: "112"),
       ]),
       const ButtonData(name: "Video Call", children: [
@@ -52,10 +52,12 @@ var homePageData = ButtonData(
         ButtonData(name: "Peter"),
         ButtonData(name: "George"),
       ]),
-      const ButtonData(name: "Message", children: [
+      ButtonData(name: "Message", children: [
         ButtonData(name: "Instagram"),
         ButtonData(name: "Facebook"),
-        ButtonData(name: "Whatsapp"),
+        ButtonData(
+            name: "Send Location",
+            action: () => shareLocation(contactName: "Rufi")),
       ]),
     ]),
   ],
