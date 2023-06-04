@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:bbl/button_data.dart';
 import 'package:bbl/actions/call.dart';
 import 'package:bbl/actions/share_location.dart';
 import 'package:bbl/actions/launch_app.dart';
 import 'package:bbl/actions/speech_to_text.dart';
+import 'package:flutter_beep/flutter_beep.dart';
 
 var homePageData = ButtonData(
   name: "Home Page",
@@ -25,7 +28,7 @@ var homePageData = ButtonData(
         ButtonData(name: "Tic Tac Toe"),
       ]),
     ]),
-    const ButtonData(name: "Study", children: [
+    ButtonData(name: "Study", children: const [
       ButtonData(name: "Singing", children: [
         ButtonData(name: "Rap"),
         ButtonData(name: "Drama"),
@@ -63,3 +66,19 @@ var homePageData = ButtonData(
     ]),
   ],
 );
+
+// void beepTester() async {
+//   List<int> availableBeeps = [];
+//   for (var i = 0; i < 100; i++) {
+//     try {
+//       await Future.delayed(const Duration(milliseconds: 300), () {});
+//       FlutterBeep.playSysSound(i);
+//       availableBeeps.add(i);
+//     } catch (e) {
+//       print(e);
+//       log("$i skipped");
+//     }
+//     ;
+//   }
+//   log(availableBeeps.toString());
+// }
