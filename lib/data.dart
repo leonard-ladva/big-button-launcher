@@ -1,11 +1,9 @@
-import 'dart:developer';
-
+import 'actions/ask_ai.dart';
 import 'package:bbl/button_data.dart';
 import 'package:bbl/actions/call.dart';
 import 'package:bbl/actions/share_location.dart';
 import 'package:bbl/actions/launch_app.dart';
 import 'package:bbl/actions/speech_to_text.dart';
-import 'package:flutter_beep/flutter_beep.dart';
 
 var homePageData = ButtonData(
   name: "Home Page",
@@ -14,7 +12,8 @@ var homePageData = ButtonData(
     ButtonData(name: "Entertainment", children: [
       ButtonData(name: "Music", children: [
         ButtonData(name: "Spotify", action: () => launchApp("Spotify")),
-        const ButtonData(name: "Write a song"),
+        ButtonData(
+            name: "Write a song", action: () => askAi("Write a brief coding rap! and only rap not anything else")),
         ButtonData(name: "Shazam", action: () => launchApp("Shazam")),
       ]),
       ButtonData(name: "Videos", children: [
