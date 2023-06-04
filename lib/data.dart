@@ -3,6 +3,7 @@ import 'package:bbl/main.dart';
 import 'package:flutter/material.dart';
 import 'package:external_app_launcher/external_app_launcher.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 const homePageData = ButtonData(
   name: "Home Page",
@@ -44,8 +45,8 @@ const homePageData = ButtonData(
     ]),
     ButtonData(name: "Social", children: [
       ButtonData(name: "Call", children: [
-        ButtonData(name: "Mom"),
-        ButtonData(name: "Brother"),
+        ButtonData(name: "Roger", action: _launchCallRoger),
+        ButtonData(name: "Leonard", action: _launchCallLeonard),
         ButtonData(name: "911"),
       ]),
       ButtonData(name: "Video Call", children: [
@@ -103,6 +104,14 @@ void _launchGO3() async {
   } else {
     speakError("Go3 is not insalled");
   }
+}
+
+void _launchCallLeonard() async {
+  await FlutterPhoneDirectCaller.callNumber("tel://+3725026036");
+}
+
+void _launchCallRoger() async {
+  await FlutterPhoneDirectCaller.callNumber("tel://+37253876410");
 }
 
 void speakError(String error) async {
