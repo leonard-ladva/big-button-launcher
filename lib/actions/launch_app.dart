@@ -6,7 +6,7 @@ var packageNames = <String, String>{
   "Shazam": "com.shazam.android",
   "Youtube": "com.google.android.youtube",
   "Netflix": "com.netflix.mediaclient",
-  "Go3": "com.go3mobile.go3",
+  "Go3": "tv.go3.android.mobile",
 };
 
 void launchApp(String appName) async {
