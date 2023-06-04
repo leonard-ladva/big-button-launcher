@@ -2,7 +2,7 @@ import 'package:bbl/button_data.dart';
 import 'package:bbl/actions/call.dart';
 import 'package:bbl/actions/share_location.dart';
 import 'package:bbl/actions/launch_app.dart';
-import 'package:bbl/main.dart';
+import 'package:bbl/actions/speech_to_text.dart';
 
 var homePageData = ButtonData(
   name: "Home Page",
@@ -19,7 +19,7 @@ var homePageData = ButtonData(
         ButtonData(name: "Netflix", action: () => launchApp("Netflix")),
         ButtonData(name: "Go3", action: () => launchApp("Go3")),
       ]),
-      ButtonData(name: "Listen", action: () => listenFunc(), children: const [
+      ButtonData(name: "Listen", action: () => listen(), children: const [
         ButtonData(name: "Snake"),
         ButtonData(name: "Word Guess"),
         ButtonData(name: "Tic Tac Toe"),

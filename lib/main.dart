@@ -1,17 +1,17 @@
 import 'package:bbl/components/button_page.dart';
 import 'package:bbl/data.dart';
+import 'package:bbl/env/env.dart';
+import 'package:bbl/actions/speech_to_text.dart';
 import 'package:bbl/speak.dart';
+import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:speech_to_text/speech_recognition_result.dart';
-import 'package:speech_to_text/speech_to_text.dart';
-import 'dart:developer';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
   SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -21,52 +21,18 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-Function listenFunc = () => log("not set listen func");
-
 class _MyAppState extends State<MyApp> {
-  final SpeechToText _speechToText = SpeechToText();
-  // bool _speechEnabled = false;
-  String _lastWords = '';
-
   @override
   void initState() {
     super.initState();
-    _initSpeech();
-  }
-
-  void _initSpeech() async {
-    // _speechEnabled = 
-    await _speechToText.initialize();
-  }
-
-  void _startListening() async {
-    await _speechToText.listen(onResult: _onSpeechResult);
-  }
-
-  void _stopListening() async {
-    await _speechToText.stop();
-  }
-
-  void _onSpeechResult(SpeechRecognitionResult result) {
-    setState(() {
-      _lastWords = result.recognizedWords;
-    });
-    log(_lastWords);
-  }
-
-  void listen() async {
-    if (_speechToText.isNotListening) {
-      await flutterTts.awaitSpeakCompletion(true);
-      _startListening();
-      return;
-    }
-    _stopListening();
+    OpenAI.apiKey =
+        Env.openAiApiKey; // Initializes the package with that API key
+    initSpeech();
+    setSpeakSettings();
   }
 
   @override
   Widget build(BuildContext context) {
-    listenFunc = listen;
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
