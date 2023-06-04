@@ -1,9 +1,9 @@
-
 import 'dart:developer';
 
 import 'package:bbl/actions/call.dart';
 import 'package:bbl/actions/get_location.dart';
 import 'package:bbl/speak.dart';
+import 'package:flutter_sms/flutter_sms.dart';
 import 'package:geolocator/geolocator.dart';
 
 void shareLocation({required String contactName}) async {
@@ -25,7 +25,7 @@ void shareLocation({required String contactName}) async {
   log(message);
   // Define the recipients
   // List<String> recipients = [number];
-
+  _sendSMS(message, "Rufi");
   // Send the SMS
   // try {
   //   String _result = await sendSMS(message: message, recipients: recipients);
@@ -37,4 +37,17 @@ void shareLocation({required String contactName}) async {
   // } catch (error) {
   //   speak('Failed to send SMS: $error');
   // }
+}
+
+void _sendSMS(String message, String contactName) async {
+  var recipientNumber = contacts[contactName];
+  if (recipientNumber == null) {
+    throw Exception('Contact $contactName not in list.');
+  }
+
+  String result = await sendSMS(message: message, recipients: [recipientNumber])
+      .catchError((error) {
+    return error;
+  });
+  log(result);
 }
