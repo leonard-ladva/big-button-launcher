@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:bbl/actions/call.dart';
 import 'package:bbl/actions/get_location.dart';
 import 'package:bbl/speak.dart';
-import 'package:flutter_sms/flutter_sms.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:sms_advanced/sms_advanced.dart';
 
 void shareLocation({required String contactName}) async {
   final number = contacts[contactName];
@@ -26,17 +26,6 @@ void shareLocation({required String contactName}) async {
   // Define the recipients
   // List<String> recipients = [number];
   _sendSMS(message, "Rufi");
-  // Send the SMS
-  // try {
-  //   String _result = await sendSMS(message: message, recipients: recipients);
-  //   if (_result != null) {
-  //     speak('SMS sent successfully');
-  //   } else {
-  //     speak('Failed to send SMS');
-  //   }
-  // } catch (error) {
-  //   speak('Failed to send SMS: $error');
-  // }
 }
 
 void _sendSMS(String message, String contactName) async {
@@ -45,9 +34,13 @@ void _sendSMS(String message, String contactName) async {
     throw Exception('Contact $contactName not in list.');
   }
 
-  String result = await sendSMS(message: message, recipients: [recipientNumber])
-      .catchError((error) {
-    return error;
-  });
-  log(result);
+  // String result = await sendSMS(message: message, recipients: [recipientNumber])
+  //     .catchError((error) {
+  //   return error;
+  // });
+  // log(result);
+
+  SmsSender sender = SmsSender();
+
+  sender.sendSms(SmsMessage(recipientNumber, 'Hello flutter world!'));
 }
