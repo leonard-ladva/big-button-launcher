@@ -45,4 +45,4 @@ app.*.map.json
 
 # env
 .env
-/lib/env/env.g.dart
+lib/env/env.g.dart
