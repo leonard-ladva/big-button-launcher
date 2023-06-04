@@ -1,4 +1,4 @@
-import 'package:bbl/components/buttonPage.dart';
+import 'package:bbl/components/button_page.dart';
 import 'package:bbl/data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

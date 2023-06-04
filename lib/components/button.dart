@@ -1,5 +1,5 @@
-import 'package:bbl/buttonData.dart';
-import 'package:bbl/components/buttonPage.dart';
+import 'package:bbl/button_data.dart';
+import 'package:bbl/components/button_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:vibration/vibration.dart';
@@ -33,6 +33,11 @@ class Button extends StatelessWidget {
     Vibration.vibrate(pattern: vibrations);
   }
 
+  static bool canPop(BuildContext context) {
+    final NavigatorState? navigator = Navigator.maybeOf(context);
+    return navigator != null && navigator.canPop();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -42,6 +47,7 @@ class Button extends StatelessWidget {
           borderRadius: BorderRadius.circular(8.0),
           child: GestureDetector(
             onDoubleTap: () {
+              if (!canPop(context)) return;
               Navigator.pop(context);
             },
             onLongPress: () {

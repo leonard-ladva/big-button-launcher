@@ -1,15 +1,13 @@
-import 'package:bbl/buttonData.dart';
+import 'package:bbl/button_data.dart';
 import 'package:bbl/components/button.dart';
 import 'package:flutter/material.dart';
 
 class ButtonPage extends StatelessWidget {
   final List<ButtonData> buttons;
-  // final Function changePageFunc;
 
   const ButtonPage({
     super.key,
     required this.buttons,
-    // required this.changePageFunc,
   });
 
   @override
@@ -23,7 +21,6 @@ class ButtonPage extends StatelessWidget {
             Button(
               buttonData: buttons[i],
               buttonIndex: i,
-              // changePageFunc: changePageFunc,
             ),
         ],
       ),
