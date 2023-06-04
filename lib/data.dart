@@ -60,12 +60,3 @@ var homePageData = ButtonData(
     ]),
   ],
 );
-
-void speakError(String error) async {
-  await flutterTts.awaitSpeakCompletion(true);
-  await flutterTts.setVolume(1.0);
-  await flutterTts.setSpeechRate(0.8);
-  await flutterTts.setPitch(1.0);
-
-  flutterTts.speak(error);
-}
