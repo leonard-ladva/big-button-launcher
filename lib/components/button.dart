@@ -1,13 +1,13 @@
 import 'package:bbl/button_data.dart';
 import 'package:bbl/components/button_page.dart';
+import 'package:bbl/main.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 import 'package:vibration/vibration.dart';
 
 class Button extends StatelessWidget {
   final ButtonData buttonData;
   final int buttonIndex;
-  final FlutterTts flutterTts = FlutterTts();
+  // final FlutterTts flutterTts = FlutterTts();
 
   Button({
     super.key,
