@@ -1,7 +1,6 @@
 import 'package:bbl/button_data.dart';
 import 'package:bbl/speak.dart';
 import 'package:external_app_launcher/external_app_launcher.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 const homePageData = ButtonData(
