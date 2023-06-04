@@ -17,7 +17,7 @@ class ButtonPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          for (var i = 0; i < 3; i++)
+          for (var i = 0; i < buttons.length; i++)
             Button(
               buttonData: buttons[i],
               buttonIndex: i,

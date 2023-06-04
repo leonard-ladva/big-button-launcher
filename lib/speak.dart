@@ -2,8 +2,8 @@ import 'package:flutter_tts/flutter_tts.dart';
 
 final FlutterTts flutterTts = FlutterTts();
 
-void speak(String sentence) async {
-  await flutterTts.awaitSpeakCompletion(false);
+Future speak(String sentence) async {
+  // await flutterTts.awaitSpeakCompletion(false);
   await setSpeakSettings();
   await flutterTts.speak(sentence);
 }

@@ -6,6 +6,7 @@ import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter_beep/flutter_beep.dart';
 
 void askAi(String prompt) async {
+  log("Asking AI: '$prompt'");
   beeper();
   try {
     OpenAIChatCompletionModel chatCompletion =
@@ -34,7 +35,8 @@ void beeper() {
 }
 
 void beep(Timer timer) {
-  FlutterBeep.playSysSound(90);
+  FlutterBeep.beep();
+  // FlutterBeep.playSysSound(90);
 }
 
 void stopBeep() {

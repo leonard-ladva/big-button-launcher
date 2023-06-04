@@ -28,6 +28,14 @@ class Button extends StatelessWidget {
     return navigator != null && navigator.canPop();
   }
 
+  Future speakButtonContents() async {
+    if (buttonData.description != null) {
+      await speak(buttonData.description!);
+    } else {
+      await speak(buttonData.name);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -38,20 +46,24 @@ class Button extends StatelessWidget {
           child: GestureDetector(
             onDoubleTap: () {
               if (!canPop(context)) return;
+              speak("Back");
               Navigator.pop(context);
             },
             onLongPress: () {
               vibrate();
-              speak(buttonData.name);
+              speakButtonContents();
             },
-            onTap: () {
+            onTap: () async {
               vibrate();
-              speak(buttonData.name);
 
               if (buttonData.action != null) {
+                await speakButtonContents();
+                await flutterTts.awaitSpeakCompletion(true);
                 buttonData.action!();
                 return;
               }
+
+              speakButtonContents();
 
               if (buttonData.children.isEmpty) {
                 return;

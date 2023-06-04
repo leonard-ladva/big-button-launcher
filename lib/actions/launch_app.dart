@@ -7,6 +7,15 @@ var packageNames = <String, String>{
   "Youtube": "com.google.android.youtube",
   "Netflix": "com.netflix.mediaclient",
   "Go3": "tv.go3.android.mobile",
+  "SoundCloud": "com.soundcloud.android",
+  "Duolingo": "com.duolingo",
+  "Eye practice": "com.eye.exercises.practice",
+  "Todo list": "com.tasks.android",
+  "Blind Square": "fi.illuusio.blindsquare",
+  "Be My Eyes": "com.bemyeyes.bemyeyes",
+  "Chess": "com.example.chess",
+  "Sudoku": "com.sudoku",
+  "Tic Tac Toe": "com.tictactoe",
 };
 
 void launchApp(String appName) async {
@@ -15,8 +24,7 @@ void launchApp(String appName) async {
     throw Exception('App $appName not in list.');
   }
   if (await LaunchApp.isAppInstalled(androidPackageName: packageName)) {
-    await LaunchApp.openApp(
-        androidPackageName: packageName, openStore: true);
+    await LaunchApp.openApp(androidPackageName: packageName, openStore: true);
   } else {
     speak('$appName app is not installed.');
   }
