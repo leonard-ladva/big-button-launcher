@@ -1,17 +1,6 @@
-# bbl
+# Big Button Launcher
+Android Launcher that simplifies smartphone usage for the blind or visually impaired.
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# big-button-launcher
+## Idea & Purpose
+This app was made during HackCodex 2023, a 48 hour hackaton in Riga. 
+The inspiration came from Braille keyboard smartphone apps where the user holds their device with the screen facing away from them and has tactile/audio feedback for all actions. 
