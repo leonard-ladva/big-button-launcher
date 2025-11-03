@@ -13,7 +13,5 @@ The idea is that the launcher sorts every action/app on your phone into one of t
 - Hold on a button to hear the category name.
 
 ## Demonstration
-https://github.com/leonard-ladva/big-button-launcher/blob/main/BigButtonLauncher%20demonstration.webm.mov
-
-
+https://github.com/user-attachments/assets/361747ba-1b3a-4750-81b3-f5698c792177
 
